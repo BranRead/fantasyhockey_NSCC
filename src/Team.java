@@ -4,6 +4,22 @@ public class Team {
     private String rating;
     private double budget;
 
+    public String getName() {
+        return name;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public double getBudget() {
+        return budget;
+    }
+
+    public Player[] getPlayers() {
+        return players;
+    }
+
     public Team(String name, Player[] players){
         this.name = name;
         this.players = players;
@@ -24,18 +40,17 @@ public class Team {
            rating = "0";
        }
 
-       budget = Math.random() * 10000;
+       budget = Math.random() * 100000;
     }
 
-    public String getName() {
-        return name;
+    public void displayPlayerStats() {
+        for (Player element : players) {
+            System.out.println(this.getName());
+            System.out.println(element.getName() + ": " + "G - " + element.getGoals() + " A - " +
+                    element.getAssists() + " Total - " + (element.getGoals() + element.getAssists()));
+        }
+
     }
 
-    public String getRating() {
-        return rating;
-    }
-
-    public double getBudget() {
-        return budget;
-    }
+   
 }

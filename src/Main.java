@@ -51,5 +51,7 @@ public class Main {
         System.out.println("Team name is: " + team1.getName() + "\n" +
                 "Team rating is: " + team1.getRating() + "\n" +
                 "Team budget is: " + team1.getBudget());
+
+        team1.displayPlayerStats();
     }
 }

@@ -9,15 +9,15 @@ public class Player {
         this.assists = assists;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public int getGoals() {
         return goals;
     }
 
     public int getAssists() {
         return assists;
+    }
+
+    public String getName() {
+        return name;
     }
 }
