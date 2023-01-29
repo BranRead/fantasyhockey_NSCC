@@ -2,56 +2,74 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Enter name for team 1: ");
-        Scanner input = new Scanner(System.in);
-        String name = input.nextLine();
 
-        System.out.println("Enter name for player 1 :");
-        String namePlayer1 = input.nextLine();
+        Scanner scan = new Scanner(System.in);
 
-        System.out.println("Enter goals for " + namePlayer1 +  ": ");
-        int goalsPlayer1 = input.nextInt();
-        String blank = input.nextLine();
 
-        System.out.println("Enter assists for " + namePlayer1 +  ": ");
-        int assistsPlayer1 = input.nextInt();
-        blank = input.nextLine();
+        //region System Start
+        System.out.println("FANTASY HOCKEY");
 
-        Player[] player = new Player[3];
-        player[0] = new Player(namePlayer1, goalsPlayer1, assistsPlayer1);
+        System.out.print("Enter how many teams will be participating: ");
+        int numTeams = scan.nextInt();
+        System.out.println();
 
-        System.out.println("Enter name for player 2 :");
-        String namePlayer2 = input.nextLine();
+        Team[] teams = new Team[numTeams];
 
-        System.out.println("Enter goals for " + namePlayer2 +  ": ");
-        int goalsPlayer2 = input.nextInt();
-        blank = input.nextLine();
+        System.out.print("Enter how many players will be on each team: ");
+        int numPlayers = scan.nextInt();
+        Player[][] players = new Player[numTeams * numPlayers][numPlayers];
+        System.out.println();
+        String blank = scan.nextLine();
+        //endregion
 
-        System.out.println("Enter assists for " + namePlayer2 +  ": ");
-        int assistsPlayer2 = input.nextInt();
-        blank = input.nextLine();
+        //region Team Entry
+        System.out.println("TEAM ENTRY");
+        for (int i = 0; i < numTeams; i++) {
+            System.out.print("Enter name for team #" + (i + 1) + ": ");
+            teams[i] = new Team(scan.nextLine(), i);
+            System.out.println();
+        }
+        //endregion
 
-        player[1] = new Player(namePlayer2, goalsPlayer2, assistsPlayer2);
+        //region Player Entry
+        System.out.println("PLAYER ENTRY");
 
-        System.out.println("Enter name for player 3 :");
-        String namePlayer3 = input.nextLine();
+        for(int i = 0; i < numTeams; i++){
+            System.out.println("Enter players for: " + teams[i].getName());
+            for(int j = 0; j < numPlayers; j++){
+                System.out.print("Enter name for player #" + (j + 1) + ": ");
+                String name = scan.nextLine();
+                System.out.println();
 
-        System.out.println("Enter goals for " + namePlayer3 +  ": ");
-        int goalsPlayer3 = input.nextInt();
-        blank = input.nextLine();
+                System.out.print("Enter number of goals for " + name + ": ");
+                int goals = scan.nextInt();
+                System.out.println();
 
-        System.out.println("Enter assists for " + namePlayer3 +  ": ");
-        int assistsPlayer3 = input.nextInt();
-        blank = input.nextLine();
+                System.out.print("Enter number of assists for " + name + ": ");
+                int assists = scan.nextInt();
+                System.out.println("\n");
+                blank = scan.nextLine();
 
-        player[2] = new Player(namePlayer3, goalsPlayer3, assistsPlayer3);
+                players[i][j] = new Player(name, goals, assists);
+            }
 
-        Team team1 = new Team(name, player);
+            teams[i].setRating(numPlayers, players);
+        }
+        //endregion
 
-        System.out.println("Team name is: " + team1.getName() + "\n" +
-                "Team rating is: " + team1.getRating() + "\n" +
-                "Team budget is: " + team1.getBudget());
 
-        team1.displayPlayerStats();
+
+
+        //region Display Stats
+        System.out.println("REPORT: Stats per team");
+        for(int i = 0; i < numTeams; i++) {
+            System.out.println("Team name is: " + teams[i].getName() + "\n" +
+                    "Team rating is: " + teams[i].getRating() + "\n" +
+                    "Team budget is: " + "$" + MoneyFormat.doubleToMoney(teams[i].getBudget()));
+        }
+
+        System.out.println("REPORT: Stats per player");
+        Player.displayPlayerStats(numTeams, teams, numPlayers, players);
+        //endregion
     }
 }

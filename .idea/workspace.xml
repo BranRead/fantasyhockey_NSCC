@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5181b38-78a7-4018-92cc-79dc47352406" name="Changes" comment="">
+    <list default="true" id="d5181b38-78a7-4018-92cc-79dc47352406" name="Changes" comment="Player stats are outputting now. Need to make it work with multiple teams now!">
+      <change afterPath="$PROJECT_DIR$/src/MoneyFormat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
@@ -36,7 +37,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Brandon/Desktop/ITProgramming/Semester2/PROG1400/Assignments/CarDemo"
+    "last_opened_file_path": "C:/Users/Brandon/Desktop/ITProgramming/Semester 2/PROG1400/Assignments/SourceCode/FantasyHockey"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -47,8 +48,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1674598820157</updated>
-      <workItem from="1674598821755" duration="8043000" />
+      <workItem from="1674598821755" duration="8538000" />
+      <workItem from="1675008782311" duration="7283000" />
     </task>
+    <task id="LOCAL-00001" summary="Player stats are outputting now. Need to make it work with multiple teams now!">
+      <created>1674757015087</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1674757015087</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -64,5 +74,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Player stats are outputting now. Need to make it work with multiple teams now!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player stats are outputting now. Need to make it work with multiple teams now!" />
   </component>
 </project>

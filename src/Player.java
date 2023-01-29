@@ -3,7 +3,7 @@ public class Player {
     private int goals;
     private int assists;
 
-    public Player(String name, int goals, int assists){
+    public Player(String name, int goals, int assists) {
         this.name = name;
         this.goals = goals;
         this.assists = assists;
@@ -19,5 +19,15 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public static void displayPlayerStats(int numTeams, Team[] teams, int numPlayers, Player[][] players) {
+        for (int i = 0; i < numTeams; i++) {
+            for(int j = 0; j < numPlayers; j++){
+                System.out.println(teams[i].getName());
+                System.out.println(players[i][j].getName() + ": " + "G - " + players[i][j].getGoals() + " A - " +
+                        players[i][j].getAssists() + " Total - " + (players[i][j].getGoals() + players[i][j].getAssists()));
+            }
+        }
     }
 }

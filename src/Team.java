@@ -1,11 +1,15 @@
 public class Team {
     private String name;
-    private Player[] players;
+    private int teamNumber;
     private String rating;
     private double budget;
 
     public String getName() {
         return name;
+    }
+
+    public int getTeamNumber() {
+        return teamNumber;
     }
 
     public String getRating() {
@@ -16,41 +20,27 @@ public class Team {
         return budget;
     }
 
-    public Player[] getPlayers() {
-        return players;
-    }
-
-    public Team(String name, Player[] players){
+    public Team(String name, int teamNumber){
         this.name = name;
-        this.players = players;
+        this.teamNumber = teamNumber;
+        this.budget = Math.random() * 100000;
+    }
 
+    public void setRating(int numPlayers, Player[][] players){
         int total = 0;
-        for(Player i : players){
-            total += i.getGoals();
-            total += i.getAssists();
+        for(int i = 0; i < numPlayers; i++){
+            total += players[this.getTeamNumber()][i].getGoals();
+            total += players[this.getTeamNumber()][i].getAssists();
         }
 
-       if (total > 20) {
-           rating = "***";
-       } else if (total >= 10) {
-           rating = "**";
-       } else if (total > 0) {
-           rating = "*";
-       } else {
-           rating = "0";
-       }
-
-       budget = Math.random() * 100000;
-    }
-
-    public void displayPlayerStats() {
-        for (Player element : players) {
-            System.out.println(this.getName());
-            System.out.println(element.getName() + ": " + "G - " + element.getGoals() + " A - " +
-                    element.getAssists() + " Total - " + (element.getGoals() + element.getAssists()));
+        if (total > 20) {
+            rating = "***";
+        } else if (total >= 10) {
+            rating = "**";
+        } else if (total > 0) {
+            rating = "*";
+        } else {
+            rating = "0";
         }
-
     }
-
-   
 }
