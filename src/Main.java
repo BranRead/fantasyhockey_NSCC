@@ -3,11 +3,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        //region Initializing Vars
         Scanner scan = new Scanner(System.in);
-        boolean inputCorrect = true;
         int numTeams = 0;
         int numPlayers = 0;
-
+        String playerName = "";
+        int goals = 0;
+        int assists = 0;
+        //endregion
 
         //region System Start
         System.out.println("FANTASY HOCKEY");
@@ -70,38 +73,67 @@ public class Main {
         System.out.println("PLAYER ENTRY");
 
         for(int i = 0; i < numTeams; i++){
-            System.out.println("Enter players for: " + teams[i].getName());
+            System.out.println("Entering players for " + teams[i].getName() + ": ");
             for(int j = 0; j < numPlayers; j++){
-                System.out.print("Enter name for player #" + (j + 1) + ": ");
-                String name = scan.nextLine();
+                do {
+                    System.out.print("Enter name for player #" + (j + 1) + ": ");
+                    playerName = scan.nextLine();
+
+                    if(playerName.length() < 3){
+                        System.out.println();
+                        System.out.println("Please enter a player name at least 3 characters long.");
+                    }
+                } while(playerName.length() < 3);
+
                 System.out.println();
 
-                System.out.print("Enter number of goals for " + name + ": ");
-                int goals = scan.nextInt();
+                do {
+                    System.out.print("Enter number of goals for " + playerName + ": ");
+                    while(!scan.hasNextInt()){
+                        System.out.println();
+                        scan.next();
+                        System.out.print("Please enter a number: ");
+                    }
+                    goals = scan.nextInt();
+
+                    if(goals < 0){
+                        System.out.println();
+                        System.out.println("Please enter a number which is 0 or greater.");
+                    }
+                } while(goals < 0);
+
                 System.out.println();
 
-                System.out.print("Enter number of assists for " + name + ": ");
-                int assists = scan.nextInt();
+                do {
+                    System.out.print("Enter number of assists for " + playerName + ": ");
+
+                    while(!scan.hasNextInt()){
+                        System.out.println();
+                        scan.next();
+                        System.out.print("Please enter a number:");
+                    }
+                    assists = scan.nextInt();
+
+                    if(assists < 0){
+                        System.out.println();
+                        System.out.println("Please enter a number which is 0 or greater.");
+
+                    }
+                } while(assists < 0);
+
                 System.out.println("\n");
                 blank = scan.nextLine();
+                players[i][j] = new Player(playerName, goals, assists);
 
-                players[i][j] = new Player(name, goals, assists);
             }
 
             teams[i].setRating(numPlayers, players);
         }
         //endregion
 
-
-
-
         //region Display Stats
         System.out.println("REPORT: Stats per team");
-        for(int i = 0; i < numTeams; i++) {
-            System.out.println("Team name is: " + teams[i].getName() + "\n" +
-                    "Team rating is: " + teams[i].getRating() + "\n" +
-                    "Team budget is: " + "$" + MoneyFormat.doubleToMoney(teams[i].getBudget()));
-        }
+        Team.displayTeamStats(numTeams, teams);
 
         System.out.println("REPORT: Stats per player");
         Player.displayPlayerStats(numTeams, teams, numPlayers, players);

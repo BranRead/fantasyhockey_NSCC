@@ -23,10 +23,12 @@ public class Player {
 
     public static void displayPlayerStats(int numTeams, Team[] teams, int numPlayers, Player[][] players) {
         for (int i = 0; i < numTeams; i++) {
+            System.out.println(teams[i].getName());
             for(int j = 0; j < numPlayers; j++){
-                System.out.println(teams[i].getName());
-                System.out.println(players[i][j].getName() + ": " + "G - " + players[i][j].getGoals() + " A - " +
-                        players[i][j].getAssists() + " Total - " + (players[i][j].getGoals() + players[i][j].getAssists()));
+                System.out.print(players[i][j].name + ": ");
+                System.out.print("G - " + players[i][j].goals);
+                System.out.print(" A - " + players[i][j].assists);
+                System.out.println(" Total - " + (players[i][j].goals + players[i][j].assists) + "\n");
             }
         }
     }

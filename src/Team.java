@@ -4,12 +4,12 @@ public class Team {
     private String rating;
     private double budget;
 
+    private int totalGoals = 0;
+
+    private int totalAssists = 0;
+
     public String getName() {
         return name;
-    }
-
-    public int getTeamNumber() {
-        return teamNumber;
     }
 
     public String getRating() {
@@ -27,20 +27,31 @@ public class Team {
     }
 
     public void setRating(int numPlayers, Player[][] players){
-        int total = 0;
         for(int i = 0; i < numPlayers; i++){
-            total += players[this.getTeamNumber()][i].getGoals();
-            total += players[this.getTeamNumber()][i].getAssists();
+            totalGoals += players[this.teamNumber][i].getGoals();
+            totalAssists += players[this.teamNumber][i].getAssists();
         }
 
-        if (total > 20) {
+        if (totalGoals + totalAssists > 20) {
             rating = "***";
-        } else if (total >= 10) {
+        } else if (totalGoals + totalAssists >= 10) {
             rating = "**";
-        } else if (total > 0) {
+        } else if (totalGoals + totalAssists > 0) {
             rating = "*";
         } else {
             rating = "0";
+        }
+    }
+
+    public static void displayTeamStats(int numOfTeams, Team[] teams) {
+        for (int i = 0; i < numOfTeams; i++) {
+            System.out.println(teams[i].name + ":");
+            System.out.print("G - " + teams[i].totalGoals);
+            System.out.print("A - " + teams[i].totalAssists);
+            System.out.println("Total - " + (teams[i].totalGoals + teams[i].totalAssists));
+            System.out.println("Budget - " + "$" + MoneyFormat.doubleToMoney(teams[i].budget));
+            System.out.println("Rating: " + teams[i].getRating() + " stars");
+            System.out.println("\n");
         }
     }
 }
