@@ -3,7 +3,11 @@
 //To-Do: Use function overloading to make this more flexible!
 
 public class MoneyFormat {
-
+    //Required:
+    //Number given as double which you want to round to
+    //number rounded and displayed as money.
+    //***The value is outputted as string***
+    //Currency symbol not included to ensure greater flexibility with any base 10 currency
     public static String doubleToMoney(double num){
 
         //First I cast the double to a string:
