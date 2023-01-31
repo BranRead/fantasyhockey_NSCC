@@ -45,13 +45,18 @@ public class Team {
 
     public static void displayTeamStats(int numOfTeams, Team[] teams) {
         for (int i = 0; i < numOfTeams; i++) {
+            System.out.println();
+            Functions.lineBreak("=", 40);
             System.out.println(teams[i].name + ":");
-            System.out.print("G - " + teams[i].totalGoals);
-            System.out.print("A - " + teams[i].totalAssists);
+            Functions.lineBreak("-", 40);
+            System.out.print("G - " + teams[i].totalGoals + " ");
+            System.out.print("A - " + teams[i].totalAssists + " ");
             System.out.println("Total - " + (teams[i].totalGoals + teams[i].totalAssists));
+            Functions.lineBreak("-", 40);
             System.out.println("Budget - " + "$" + MoneyFormat.doubleToMoney(teams[i].budget));
+            Functions.lineBreak("-", 40);
             System.out.println("Rating: " + teams[i].getRating() + " stars");
-            System.out.println("\n");
+            Functions.lineBreak("=", 40);
         }
     }
 }

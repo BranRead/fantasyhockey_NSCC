@@ -25,10 +25,13 @@ public class Player {
         for (int i = 0; i < numTeams; i++) {
             System.out.println(teams[i].getName());
             for(int j = 0; j < numPlayers; j++){
+                System.out.println();
+                Functions.lineBreak("-", 40);
                 System.out.print(players[i][j].name + ": ");
                 System.out.print("G - " + players[i][j].goals);
                 System.out.print(" A - " + players[i][j].assists);
-                System.out.println(" Total - " + (players[i][j].goals + players[i][j].assists) + "\n");
+                System.out.print(" Total - " + (players[i][j].goals + players[i][j].assists) + "\n");
+                Functions.lineBreak("-", 40);
             }
         }
     }

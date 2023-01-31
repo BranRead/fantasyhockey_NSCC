@@ -13,7 +13,9 @@ public class Main {
         //endregion
 
         //region System Start
+        Functions.lineBreak("=", 40);
         System.out.println("FANTASY HOCKEY");
+        Functions.lineBreak("=", 40);
 
 
         do {
@@ -29,7 +31,7 @@ public class Main {
                 System.out.println();
             }
         } while (numTeams < 2);
-        System.out.println();
+        Functions.lineBreak("-", 40);
 
         Team[] teams = new Team[numTeams];
 
@@ -47,7 +49,7 @@ public class Main {
             }
 
         } while (numPlayers < 1);
-
+        Functions.lineBreak("-", 40);
         Player[][] players = new Player[numTeams * numPlayers][numPlayers];
         System.out.println();
         String blank = scan.nextLine();
@@ -55,7 +57,10 @@ public class Main {
         //endregion
 
         //region Team Entry
+        Functions.lineBreak("=", 40);
         System.out.println("TEAM ENTRY");
+        Functions.lineBreak("=", 40);
+
         for (int i = 0; i < numTeams; i++) {
             do {
                 System.out.print("Enter name for team #" + (i + 1) + ": ");
@@ -64,16 +69,23 @@ public class Main {
                 if(teams[i].getName().length() < 3){
                     System.out.println("Please enter a name at least 3 characters long.");
                 }
-                System.out.println();
             }while(teams[i].getName().length() < 3);
+
+            Functions.lineBreak("-", 40);
+
         }
         //endregion
 
         //region Player Entry
+        Functions.lineBreak("=", 40);
         System.out.println("PLAYER ENTRY");
+        Functions.lineBreak("=", 40);
+        System.out.println();
 
         for(int i = 0; i < numTeams; i++){
+            Functions.lineBreak("=", 40);
             System.out.println("Entering players for " + teams[i].getName() + ": ");
+            Functions.lineBreak("=", 40);
             for(int j = 0; j < numPlayers; j++){
                 do {
                     System.out.print("Enter name for player #" + (j + 1) + ": ");
@@ -84,8 +96,7 @@ public class Main {
                         System.out.println("Please enter a player name at least 3 characters long.");
                     }
                 } while(playerName.length() < 3);
-
-                System.out.println();
+                Functions.lineBreak("-", 40);
 
                 do {
                     System.out.print("Enter number of goals for " + playerName + ": ");
@@ -101,8 +112,7 @@ public class Main {
                         System.out.println("Please enter a number which is 0 or greater.");
                     }
                 } while(goals < 0);
-
-                System.out.println();
+                Functions.lineBreak("-", 40);
 
                 do {
                     System.out.print("Enter number of assists for " + playerName + ": ");
@@ -121,7 +131,8 @@ public class Main {
                     }
                 } while(assists < 0);
 
-                System.out.println("\n");
+                Functions.lineBreak("-", 40);
+                System.out.println();
                 blank = scan.nextLine();
                 players[i][j] = new Player(playerName, goals, assists);
 
@@ -132,10 +143,15 @@ public class Main {
         //endregion
 
         //region Display Stats
+        Functions.lineBreak("=", 40);
         System.out.println("REPORT: Stats per team");
+        Functions.lineBreak("=", 40);
+
         Team.displayTeamStats(numTeams, teams);
 
+        Functions.lineBreak("=", 40);
         System.out.println("REPORT: Stats per player");
+        Functions.lineBreak("=", 40);
         Player.displayPlayerStats(numTeams, teams, numPlayers, players);
         //endregion
     }
