@@ -13,9 +13,11 @@ public class Main {
         //endregion
 
         //region System Start
-        Functions.lineBreak("=", 40);
-        System.out.println("FANTASY HOCKEY");
-        Functions.lineBreak("=", 40);
+        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", 50);
+        System.out.println("\t\t\t\t\s\sFANTASY HOCKEY");
+        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", 50);
 
 
         do {
@@ -31,7 +33,7 @@ public class Main {
                 System.out.println();
             }
         } while (numTeams < 2);
-        Functions.lineBreak("-", 40);
+        Functions.lineBreak("-", 50);
 
         Team[] teams = new Team[numTeams];
 
@@ -49,7 +51,7 @@ public class Main {
             }
 
         } while (numPlayers < 1);
-        Functions.lineBreak("-", 40);
+        Functions.lineBreak("-", 50);
         Player[][] players = new Player[numTeams * numPlayers][numPlayers];
         System.out.println();
         String blank = scan.nextLine();
@@ -57,9 +59,11 @@ public class Main {
         //endregion
 
         //region Team Entry
-        Functions.lineBreak("=", 40);
-        System.out.println("TEAM ENTRY");
-        Functions.lineBreak("=", 40);
+        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", 50);
+        System.out.println("\t\t\t\t\tTEAM ENTRY");
+        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", 50);
 
         for (int i = 0; i < numTeams; i++) {
             do {
@@ -71,21 +75,23 @@ public class Main {
                 }
             }while(teams[i].getName().length() < 3);
 
-            Functions.lineBreak("-", 40);
-
+            Functions.lineBreak("-", 50);
         }
+        System.out.println();
         //endregion
 
         //region Player Entry
-        Functions.lineBreak("=", 40);
-        System.out.println("PLAYER ENTRY");
-        Functions.lineBreak("=", 40);
+        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", 50);
+        System.out.println("\t\t\t\t\s\s\sPLAYER ENTRY");
+        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", 50);
         System.out.println();
 
         for(int i = 0; i < numTeams; i++){
-            Functions.lineBreak("=", 40);
+            Functions.lineBreak("=", 50);
             System.out.println("Entering players for " + teams[i].getName() + ": ");
-            Functions.lineBreak("=", 40);
+            Functions.lineBreak("=", 50);
             for(int j = 0; j < numPlayers; j++){
                 do {
                     System.out.print("Enter name for player #" + (j + 1) + ": ");
@@ -96,7 +102,7 @@ public class Main {
                         System.out.println("Please enter a player name at least 3 characters long.");
                     }
                 } while(playerName.length() < 3);
-                Functions.lineBreak("-", 40);
+                Functions.lineBreak("-", 50);
 
                 do {
                     System.out.print("Enter number of goals for " + playerName + ": ");
@@ -112,7 +118,7 @@ public class Main {
                         System.out.println("Please enter a number which is 0 or greater.");
                     }
                 } while(goals < 0);
-                Functions.lineBreak("-", 40);
+                Functions.lineBreak("-", 50);
 
                 do {
                     System.out.print("Enter number of assists for " + playerName + ": ");
@@ -131,7 +137,7 @@ public class Main {
                     }
                 } while(assists < 0);
 
-                Functions.lineBreak("-", 40);
+                Functions.lineBreak("-", 50);
                 System.out.println();
                 blank = scan.nextLine();
                 players[i][j] = new Player(playerName, goals, assists);
@@ -143,15 +149,21 @@ public class Main {
         //endregion
 
         //region Display Stats
-        Functions.lineBreak("=", 40);
-        System.out.println("REPORT: Stats per team");
-        Functions.lineBreak("=", 40);
-
+        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", 50);
+        System.out.println("\t\t\t\sREPORT: Stats per team");
+        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", 50);
         Team.displayTeamStats(numTeams, teams);
 
-        Functions.lineBreak("=", 40);
-        System.out.println("REPORT: Stats per player");
-        Functions.lineBreak("=", 40);
+        System.out.println();
+
+        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", 50);
+        System.out.println("\t\t\t\sREPORT: Stats per player");
+        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", 50);
+        System.out.println();
         Player.displayPlayerStats(numTeams, teams, numPlayers, players);
         //endregion
     }
