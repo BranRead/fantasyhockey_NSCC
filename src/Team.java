@@ -63,7 +63,7 @@ public class Team {
         //Rating
         for (int t = 0; t < numOfTeams; t++) {
             Functions.lineBreak("=", 50);
-            System.out.println(teams[t].name + ":");
+            Functions.indent(teams[t].name + ":", 50);
             Functions.lineBreak("=", 50);
             System.out.print("G - " + teams[t].totalGoals + " \t");
             System.out.print("A - " + teams[t].totalAssists + " \t");
@@ -73,6 +73,7 @@ public class Team {
             Functions.lineBreak("-", 50);
             System.out.println("Rating: " + teams[t].rating + " stars");
             Functions.lineBreak("=", 50);
+            System.out.println();
         }
     }
     //endregion

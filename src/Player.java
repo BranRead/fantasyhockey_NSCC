@@ -29,14 +29,16 @@ public class Player {
     //array of Team objects,
     //number of players and
     //array of arrays of Player objects
-    public static void displayPlayerStats(int numTeams, Team[] teams, int numPlayers, Player[][] players) {
+    public static void displayPlayerStats(int numTeams, Team[] teams, int numPlayers,
+                                          Player[][] players) {
         //Displays all stats team by team with a for loop nested within a for loop
         for (int t = 0; t < numTeams; t++) {
             //The outside loop simply prints the team name and tracks the team index
             //t = team index, p = player index
             Functions.lineBreak("=", 50);
-            System.out.println(teams[t].getName());
+            Functions.indent(teams[t].getName(), 50);
             Functions.lineBreak("=", 50);
+
             for(int p = 0; p < numPlayers; p++){
                 //This outputs the name, goals, assists and total of these two
                 //This all goes on the same line then it goes to the next player
@@ -46,8 +48,13 @@ public class Player {
                 System.out.print("\tA - " + players[t][p].assists);
                 System.out.print("\tTotal - " + (players[t][p].goals + players[t][p].assists) + "\n");
 
-                Functions.lineBreak("-", 50);
+                //Just a conditional to format it properly.
+                //Doesn't add the line of "-" after the last player for the team.
+                if(p < numPlayers - 1) {
+                    Functions.lineBreak("-", 50);
+                }
             }
+            Functions.lineBreak("=", 50);
             System.out.println();
         }
     }

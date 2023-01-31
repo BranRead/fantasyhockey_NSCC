@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Functions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Functions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MoneyFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MoneyFormat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Team.java" afterDir="false" />
     </list>
@@ -51,7 +50,7 @@
       <updated>1674598820157</updated>
       <workItem from="1674598821755" duration="8538000" />
       <workItem from="1675008782311" duration="9502000" />
-      <workItem from="1675103761542" duration="23364000" />
+      <workItem from="1675103761542" duration="31655000" />
     </task>
     <task id="LOCAL-00001" summary="Player stats are outputting now. Need to make it work with multiple teams now!">
       <created>1674757015087</created>

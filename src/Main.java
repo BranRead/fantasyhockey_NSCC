@@ -10,16 +10,19 @@ public class Main {
         String playerName;
         int goals;
         int assists;
+
+        //Width of the symbol lines used everywhere and used for indented text
+        int dispWidth = 50;
         //endregion
 
         //region System Start
         //Any of these functions called line break take a symbol and an int
         //They then repeat that symbol in a line for that many characters
-        Functions.lineBreak("=", 50);
-        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", dispWidth);
+        Functions.lineBreak("=", dispWidth);
         System.out.println("\t\t\t\t\s\sFANTASY HOCKEY");
-        Functions.lineBreak("=", 50);
-        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", dispWidth);
+        Functions.lineBreak("=", dispWidth);
 
         //Using do...while loop because I want this to run at least once.
         do {
@@ -41,7 +44,7 @@ public class Main {
                 System.out.println();
             }
         } while (numTeams < 2);
-        Functions.lineBreak("-", 50);
+        Functions.lineBreak("-", dispWidth);
         //I initialize an array of Team objects after finding out how many teams are being created.
         Team[] teams = new Team[numTeams];
 
@@ -63,7 +66,7 @@ public class Main {
             }
 
         } while (numPlayers < 1);
-        Functions.lineBreak("-", 50);
+        Functions.lineBreak("-", dispWidth);
         //An array of arrays made here for easy access to the players of each team
         //This allows finding the players with each team's index value.
         Player[][] players = new Player[numTeams * numPlayers][numPlayers];
@@ -75,48 +78,49 @@ public class Main {
         //endregion
 
         //region Team Entry
-        Functions.lineBreak("=", 50);
-        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", dispWidth);
+        Functions.lineBreak("=", dispWidth);
         System.out.println("\t\t\t\t\tTEAM ENTRY");
-        Functions.lineBreak("=", 50);
-        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", dispWidth);
+        Functions.lineBreak("=", dispWidth);
 
         //Another do/while loop nested within a for loop to validate user entry
         //For each team name. Loops for however many teams the user entered
-        for (int i = 0; i < numTeams; i++) {
+        for (int t = 0; t < numTeams; t++) {
             do {
                 //The index for the array will start at zero and increment instead of 1
                 //I add one to it here so it displays properly for the user.
-                System.out.print("Enter name for team #" + (i + 1) + ": ");
+                System.out.print("Enter name for team #" + (t + 1) + ": ");
                 //Add to the array of teams right away, along with the index number to create the object
-                teams[i] = new Team(scan.nextLine(), i);
+                teams[t] = new Team(scan.nextLine(), t);
 
                 //Like before I check to see if the user will fail the exit requirement of the loop
                 //If they will I give them the reason for that failure.
-                if(teams[i].getName().length() < 3){
+                if(teams[t].getName().length() < 3){
                     System.out.println("Please enter a name at least 3 characters long.");
+                    System.out.println();
                 }
-            }while(teams[i].getName().length() < 3);
+            }while(teams[t].getName().length() < 3);
 
-            Functions.lineBreak("-", 50);
+            Functions.lineBreak("-", dispWidth);
         }
         System.out.println();
         //endregion
 
         //region Player Entry
-        Functions.lineBreak("=", 50);
-        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", dispWidth);
+        Functions.lineBreak("=", dispWidth);
         System.out.println("\t\t\t\t\s\s\sPLAYER ENTRY");
-        Functions.lineBreak("=", 50);
-        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", dispWidth);
+        Functions.lineBreak("=", dispWidth);
         System.out.println();
 
         //Loops for each team.
         //Stating the team name at the beginning and then looping through the players.
         for(int t = 0; t < numTeams; t++){
-            Functions.lineBreak("=", 50);
-            System.out.println("Entering players for " + teams[t].getName() + ": ");
-            Functions.lineBreak("=", 50);
+            Functions.lineBreak("=", dispWidth);
+            Functions.indent("Entering players for " + teams[t].getName() + ": ", dispWidth);
+            Functions.lineBreak("=", dispWidth);
             //Entering the Player name involves a very similar do/while loop nested within a for loop.
             //The for loop takes in name, goals and assists for each player every loop
             //Helpful reminder: t = index of team, p = index of player
@@ -128,12 +132,11 @@ public class Main {
                     playerName = scan.nextLine();
 
                     if(playerName.length() < 3){
+                        System.out.println("Please enter a name at least 3 characters long.");
                         System.out.println();
-                        scan.next();
-                        System.out.println("Please enter a player name at least 3 characters long.");
                     }
                 } while(playerName.length() < 3);
-                Functions.lineBreak("-", 50);
+                Functions.lineBreak("-", dispWidth);
 
                 //The next two do/while loops are the same, just adjusted for outputs to say goal/assist
                 //Also adds the input value to the respective variable.
@@ -147,13 +150,12 @@ public class Main {
                     goals = scan.nextInt();
 
                     if(goals < 0){
-                        System.out.println();
-                        scan.next();
                         System.out.println("Please enter a number which is 0 or greater.");
+                        System.out.println();
                     }
                 } while(goals < 0);
 
-                Functions.lineBreak("-", 50);
+                Functions.lineBreak("-", dispWidth);
 
                 do {
                     System.out.print("Enter number of assists for " + playerName + ": ");
@@ -166,13 +168,12 @@ public class Main {
                     assists = scan.nextInt();
 
                     if(assists < 0){
-                        System.out.println();
-                        scan.next();
                         System.out.println("Please enter a number which is 0 or greater.");
+                        System.out.println();
                     }
                 } while(assists < 0);
 
-                Functions.lineBreak("-", 50);
+                Functions.lineBreak("-", dispWidth);
                 System.out.println();
                 blank = scan.nextLine();
                 //Basically this just adds the players in order to the correct array.
@@ -187,23 +188,30 @@ public class Main {
         //endregion
 
         //region Display Stats
-        Functions.lineBreak("=", 50);
-        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", dispWidth);
+        Functions.lineBreak("=", dispWidth);
         System.out.println("\t\t\t\sREPORT: Stats per team");
-        Functions.lineBreak("=", 50);
-        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", dispWidth);
+        Functions.lineBreak("=", dispWidth);
         System.out.println();
         Team.displayTeamStats(numTeams, teams);
 
         System.out.println();
 
-        Functions.lineBreak("=", 50);
-        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", dispWidth);
+        Functions.lineBreak("=", dispWidth);
         System.out.println("\t\t\t\sREPORT: Stats per player");
-        Functions.lineBreak("=", 50);
-        Functions.lineBreak("=", 50);
+        Functions.lineBreak("=", dispWidth);
+        Functions.lineBreak("=", dispWidth);
         System.out.println();
         Player.displayPlayerStats(numTeams, teams, numPlayers, players);
+
+        Functions.lineBreak("=", dispWidth);
+        System.out.println("\t\t\sTeam and player stats outputted,");
+        System.out.println("\t\t\t\tScroll up to read.");
+        System.out.println("\t\t\sThank you for using this program!");
+        Functions.lineBreak("=", dispWidth);
+        System.out.println();
         //endregion
     }
 }
